@@ -1,23 +1,16 @@
-광주인공지능사관학교를 연결시키다, <i>connect!</i>
-
-<img width="1100" alt="image" src="https://github.com/leechi/connect/assets/100564742/1a017963-168b-4a0f-8ea4-31929bdb1556">
+<img width="1338" alt="image" src="https://github.com/leechi/connect/assets/100564742/1a017963-168b-4a0f-8ea4-31929bdb1556">
 
 
 
-<h3>주요 기능 소개</h3>
-<hr/>
+<h3>주요 기능</h3>
 
-<h2>1. 모집, 게시판</h2>
+
+
 <img width="1338" alt="image" src="https://github.com/leechi/connect/assets/100564742/3ee06c19-c80e-4094-bf90-e500bd02b85a">
 
 
-
-<h2> 2. 그룹웨어</h2>
 <img width="1338" alt="image" src="https://github.com/leechi/connect/assets/100564742/c370cad5-4267-4448-8610-a8a4321606f3">
 
-
-
-<h2>3. 실시간 채팅</h3>
 
 <img width="1338" alt="image" src="https://github.com/leechi/connect/assets/100564742/fbe7df8d-e8c8-4679-a7fd-33cd0b7cd779">
 
