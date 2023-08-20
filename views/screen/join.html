@@ -1,0 +1,118 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<main class="join__box">
+    <div class="joinbox">
+        <img class="join__logo" src="./img/logo.png" alt="logo">
+
+        <form class="join" method="post" action="user/join">
+            <h4 class="title">회원아이디/비밀번호</h4>
+
+            <div class="box__input__top">
+                <div class="duplicate__check">
+                    <input type="text" name="id" id="join__id" placeholder="아이디">
+                    <button id="join__du" type="button" onclick="dup_check()">
+                        중복확인
+                    </button>
+                </div>
+                <div class="duplicate__check">
+                    <input type="password" name="pw" id="join__pw" placeholder="비밀번호">
+                </div>
+                <div class="duplicate__check">
+                    <input type="password" name="pw2" id="join__pw-re" placeholder="비밀번호 재확인" id="under_line">
+                </div>
+            </div>
+
+
+            <div class="confirm__info">
+                <h4 class="title">확인 정보</h4>
+
+                <div class="box__input__under">
+                    <input type="text" name="name" id="name" placeholder="이름">
+                    <input type="text" name="git" placeholder="깃허브 아이디" id="gitid">
+                    <div class="join__phone">
+                        <input type="text" name="phone" placeholder="휴대전화번호     ex) 010-1234-5678" id="phone">
+                        <button id="join__phone__du" type="button" onclick="phone_check()">
+                            번호인증
+                        </button>
+                    </div>
+
+
+                    <select name="process1" id="option__class" required>
+                        <option value="" disabled selected>과정을 선택해주세요</option>
+                        <option value="JS">JS</option>
+                        <option value="APP">App</option>
+                        <option value="Spring">Spring</option>
+                        <option value="클라우드">클라우드</option>
+                        <option value="사물지능">사물지능</option>
+                        <option value="시각지능">시각지능</option>
+                        <option value="언어지능">언어지능</option>
+                    </select>
+                </div>
+            </div>
+            <h1 class="join__alert"></h1>
+            <button class="join__button" type="submit">가입하기</button>
+        </form>
+
+
+    </div>
+</main>
+<script src="js/screen/join.js"></script>
+<script>
+    function dup_check() {
+        const userId = document.getElementById('join__id').value;
+        console.log(userId);
+        fetch('/user/dup_check', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ userId: userId }),
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                console.log(res)
+                if (res == 1) {
+                    alert("중복된 아이디입니다")
+                } else {
+                    alert("사용가능한 아이디입니다.")
+                }
+
+
+            }
+
+            );
+    }
+
+    function phone_check() {
+        const userPhone = document.getElementById('phone').value;
+        console.log(userPhone);
+        fetch('/user/phone_check', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ userPhone: userPhone }),
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                console.log(res)
+                if (res == 1) {
+                    alert("인증 됐습니다")
+                } else {
+                    alert("없는 번호 입니다 관리자에게 문의하세요")
+                    document.getElementById('phone').value = "";
+                }
+
+
+            }
+
+            );
+    }
+
+
+
+
+</script>
+
+{% endblock %}

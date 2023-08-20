@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="member__info__box">
+    <img class="picture-img" src="./photo/logo2.PNG" alt="logo2">
+    <form class="change__input">
+
+        <h4 class="title__idpw">회원 정보변경</h4>
+        <div class="box__input__info">
+            <input type="text" name="name" placeholder="이름">
+            <input type="text" name="id" placeholder="전화번호 변경">
+            <input type="text" name="id" placeholder="깃허브 아이디 변경">
+            <input type="text" name="id" placeholder="과정" id="process__under_line">
+        </div>
+    </form>
+
+
+    <button class="change__button">변경하기</button>
+
+
+</div>
+{% endblock %}

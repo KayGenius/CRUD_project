@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+
+<head>
+    <link rel="stylesheet" href="login.css">
+</head>
+<main class="login-box">
+
+    <section class="login">
+        <img src="/img/login.png" alt="">
+        <form action="user/login" method="post">
+            <h1 class="login__title">
+                로그인
+            </h1>
+            <div class="login__inputs">
+                <input type="text" placeholder="아이디를 입력해주세요." id="id" name="id">
+                <input type="password" placeholder="비밀번호를 입력해주세요." id="pw" name="pw">
+            </div>
+            <h1 class="login__alert">
+
+            </h1>
+            <div class="login__buttons">
+                <button type="submit" class="login__btnn">
+                    로그인
+                </button>
+
+                <a class="login__joinbtn" href="/join">회원가입</a>
+
+
+                <a class="login__gitbtn" href="mailto:leechi2228@gmail.com">
+                    <i class="fa-regular fa-envelope"></i> <span>문의하기</span>
+                </a>
+
+
+            </div>
+        </form>
+    </section>
+</main>
+<script src="/js/screen/login.js"></script>
+{% endblock %}

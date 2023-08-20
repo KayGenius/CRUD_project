@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% block content %}
+<section class="team">
+    <!-- 채팅입니다. -->
+    <form class="team-make" action="">
+        <img class="team__logo" src="/img/logo.png" alt="">
+        <input type="text" class="chatroom_title" placeholder="채팅이름을 작성해주세요 :)">
+        <button class="chatroom_title_btn" type="button">생성하기</button>
+    </form>
+
+</section>
+<script>
+
+
+
+    let chatroom_idx
+    $('.chatroom_title_btn').click((e) => {
+        let url = 'chat/chatroom_create'
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                title: $('.chatroom_title').val()
+
+            })
+        })
+            .then(res => res.json()) // (res) =>{(return res.json)}
+            .then(res => {                        //채팅방 생성하면 생신 룸번호를 가져옴. 이걸 다시 노드에 보내줘야함.
+                chatroom_idx = res.room_idx
+
+                if (res) { location.href = `chat/chatinvite${chatroom_idx}` }
+            }
+
+            )
+
+    })
+
+
+
+</script>
+
+{% endblock %}

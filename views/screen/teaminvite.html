@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<section class="team">
+
+    <div class="team-make">
+        <img src="/img/logo.png" class="team__logo" alt="">
+        <div class="search-container">
+            <input type="text" placeholder="이름을 검색해보세요!" class="search-input" id="user_search">
+            <button class="search-btn" id="search_btn">검색</button>
+        </div>
+        <div class="user_search"></div>
+        <div class="team__add">
+            <input type="text" style="display:none" value={{data}} class="room_idx">
+            <input type="text" placeholder="그룹원을 초대해주세요 :)" class="user_id">
+            <button class="AddBtn" style="margin: 0;">추가</button>
+
+        </div>
+        <div class="invite__user">
+            <!-- {% for i in userlist %} -->
+            <span>leechi</span>
+
+            <!-- {% endfor %} -->
+        </div>
+        <a href="/user/myteam"><button class="inviteBtn" type="submit">초대하기</button></a>
+    </div>
+
+
+</section>
+
+<script>
+    // 그룹원 초대
+    $('.AddBtn').click((e) => {
+        let user_id = $('.user_id').val()
+        let group_idx = $('.room_idx').val()
+        let url = '/teaminvite'
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+
+                user_id: user_id,
+                group_idx: group_idx
+            })
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                if (res == "1") { alert("없는 회원 입니다") } else {
+                    $('.invite__user').append(`<span>${res}</span>`)
+                }
+
+
+            });
+
+    })
+
+
+    // 그룹원 검색
+    $('#search_btn').click((e) => {
+        let user_name = $('#user_search').val()
+        let url = 'user_search'
+        $('.user_search').html('');
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user_name: user_name
+            })
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                if (res == '아이디가 존재하지 않네요😥') {
+                    $('.user_search').text(res);
+                } else {
+                   for(i = 0 ; i <= res.search.length ; i++){
+
+                 
+                    $('.user_search').append(`<span>아이디:  ${res.search[i].user_id}  
+                        반(과정): ${res.search[i].user_class}</span><br><br>`);
+                }
+                }
+
+
+            });
+
+    })
+</script>
+
+{% endblock %}

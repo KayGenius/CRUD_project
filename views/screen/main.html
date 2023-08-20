@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% include 'components/header.html'%}
+<section class="banner">
+    <div class="banner__slide">
+        <div class="banner__box">
+            <div class="banner__content two">
+                <div class="banner__text">
+
+                    <h1 class="banner__title">소통은 커넥트!</h1>
+                    <h2 class="banner__subtitle">함께 소통하며 성장하는 공간</h2>
+                    <h2 class="banner__desc">우리의 웹사이트에 오신것을 환영합니다!"</h2>
+                </div>
+                <div class="banner__img-box">
+                    <img class="banner__img" src="/img/love.png" alt="logo2">
+                    <span class="banner__deco one2"></span>
+                </div>
+            </div>
+        </div>
+        <div class="banner__box">
+            <div class="banner__content one">
+                <div class="banner__text">
+                    <h1 class="banner__title">함께 만들어나가요!</h1>
+                    <h3 class="banner__desc">지금 바로 참여해보세요🤗</h3>
+                </div>
+                <div class="banner__img-box">
+                    <img class="banner__img" src="/img/good-review.png" alt="logo2">
+                    <span class="banner__deco one1"></span>
+                </div>
+            </div>
+        </div>
+        <div class="banner__box">
+            <div class="banner__content three">
+                <div class="banner__text">
+                    <h1 class="banner__title"> 즐겁게 서로의 의견을 공유하고</h1>
+                    <h1 class="banner__subtitle">새로운 아이디어를 얻어가세요!</h1>
+
+                    <h2 class="banner__desc">자세히 알아보세요👀</h3>
+                </div>
+                <div class="banner__img-box">
+                    <img class="banner__img" src="/img/friendship.png" alt="logo2">
+                    <span class="banner__deco one3 yelloright"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<section class="click__box">
+    <div class="banner__click">
+        <div class="btnone"></div>
+        <div class="btntwo"></div>
+        <div class="btnthree"></div>
+    </div>
+</section>
+
+<section class="">
+
+</section>
+
+<main class="main">
+
+    {% include 'components/search.html'%}
+    <div class="main__board-flex">
+
+        <div class="main__board">
+            {% include 'components/board.html'%}
+        </div>
+    </div>
+    {% include 'components/paging.html'%}
+</main>
+{% include 'components/footer.html'%}
+<script src="/js/components/banner.js"></script>
+
+{% endblock %}

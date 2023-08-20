@@ -1,0 +1,26 @@
+<div class="search">
+    <ul class="search__list">
+        <a href="/page/1">
+            <li>전체</li>
+        </a>
+        <a href="/project">
+            <li>프로젝트</li>
+        </a>
+        <a href="/study">
+            <li>스터디</li>
+        </a>
+        <a href="/Competition">
+            <li>공모전</li>
+        </a>
+        <a href="/boardpan">
+            <li>게시판</li>
+        </a>
+    </ul>
+    <div class="search__bar">
+        <button class="search__button"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <form action="/search" method="post">
+            <input name="content" type="text" class="search__input" placeholder="제목, 게시글, 작성자 검색">
+        </form>
+    </div>
+</div>
+<script src="/js/components/search.js"></script> <!-- path 수정 -->

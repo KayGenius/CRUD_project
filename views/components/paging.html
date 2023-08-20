@@ -1,0 +1,70 @@
+<style>
+  /* 다른 스타일은 여기에 유지 */
+  .pagination {
+
+    text-align: center;
+    margin: 40px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .page-link {
+    font-size: medium;
+    padding: 5px 10px;
+    text-decoration: none;
+    margin: 0 6px;
+    background-color: var(--input-color);
+    border: 1px solid transparent;
+    color: black;
+    border-radius: 5px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+  }
+
+  .paging-left,
+  .paging-right {
+    color: var(--main-color);
+    margin: 0 15px;
+  }
+
+  .page-link:hover {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
+    background-color: var(--main-color);
+    color: white;
+  }
+
+  .bordered {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
+    background-color: var(--main-color);
+    color: white;
+    border-radius: 5px;
+
+
+  }
+</style>
+
+<div class="pagination">
+  <a href="/page/1" class="paging-left"><i class="fa-solid fa-chevron-left"></i></a>
+  {% for pageNumber in range(1, totalPages + 1) %}
+  <a href="/page/{{ pageNumber }}" class="page-link">{{ pageNumber
+    }}</a>
+  {% endfor %}
+  <a href="/page/{{ totalPages }}" class="paging-right"><i class="fa-solid fa-chevron-right"></i></a>
+</div>
+
+<script>
+  const currentPage = parseInt(window.location.href.match(/page\/(\d+)/)[1], 5);
+  let pageLinks = document.querySelectorAll('.page-link');
+  for (let i = 0; i < pageLinks.length; i++) {
+    pageLinks[i].classList.remove('bordered');
+    if (parseInt(pageLinks[i].textContent, 5) === currentPage) {
+      pageLinks[i].classList.add('bordered');
+    }
+  }
+</script>

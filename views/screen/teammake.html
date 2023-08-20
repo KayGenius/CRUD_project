@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% block content %}
+<section class="team">
+
+    <form class="team-make" action="/teammake" method="post">
+        <img class="team__logo" src="/img/logo.png" alt="">
+        <input type="text" placeholder="그룹방 이름을 작성해주세요 :)" name="group_title">
+
+        <input type="text" placeholder="그룹방 모집내용을 작성해주세요 :)" name="group_desc">
+        <button type="submit">생성하기</button>
+    </form>
+
+</section>
+{% endblock %}

@@ -1,0 +1,39 @@
+<section class="chat-roomm">
+    <a href="https://connect.aischool.o-r.kr/page/1"><img class="chat-room__logo" src="/img/logo.png" alt=""></a>
+
+    <ul class="chat-roomm__list">
+        <h1>채팅</h1>
+        {%for i in data%}
+
+        <li class="chat-roomm__li" data-idx="{{i.room_idx}}" data-id="{{i.room_people}}" data-title="{{i.room_title}}">
+            <div>{{i.room_title}}</div>
+            <!-- <div>{{i.room_desc}}</div>
+                <div>{{i.created_at}}</div> -->
+        </li>
+        {%endfor%}
+    </ul>
+    <!--채티방의 회원 보여주는 칸-->
+    <div class="chat-room_user">
+        <h1>대화상대</h1>
+        <ul class="chat-room_userbox">
+
+            <li class="chat-room_userlis">
+            </li>
+        </ul>
+        <br>
+        
+        <button class="chat-room_user_inv hidden">+초대하기</button>
+        <div class="chat-room_inv_box">
+            <input type="text" class ="chat-room_inv_name hidden" placeholder="아이디를 입력하세요">
+            <button class="chat-room_inv_btn hidden">✔</button>
+            </div>
+    </div>
+
+    <!--채팅방 나가기-->
+    
+     <button class="chat-room_exit_btn">채팅방 나가기</button> 
+    
+
+
+
+</section>

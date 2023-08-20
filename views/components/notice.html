@@ -1,0 +1,42 @@
+<section class="notice__write hidden">
+    <form action="/group/notice" class="notice__form" method="post">
+        <button class="notice__write__close" type="button"><i class="fa-solid fa-xmark"></i></button>
+
+        <div>
+            <input type="text" class="notice__input" placeholder="간단한 소통을 즐겨보세요 :)" name="title" required>
+            <input type="text" style="display:none;" value="{{group}}" name="group_idx">
+        </div>
+
+        <section class="notice__btn__box">
+            <button class="notice__btn" type="submit">작성하기</button>
+        </section>
+    </form>
+</section>
+
+<div>
+
+    <div class="new-task__box1">
+        <button class="add-new-task-btn1 hidden"><i class="fa-solid fa-plus"></i> 리스트</button>
+    </div>
+
+
+
+    <ul class="notice__list hidden">
+        <!-- 상세페이지로 넘어가게 만들거임 html 수정은 차후 결정^^ -->
+
+
+        {% for notice in notice %}
+        <li>
+            <div>
+                <span>{{notice.noti_content}}</span>
+            </div>
+            <div>
+                <time style="margin-right: 20px;">{{notice.user_name}}</time>
+                <time style="font-weight: 400; color:var(--main-color)">{{notice.created_at}}</time>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<script src="/js/components/notice.js"></script>

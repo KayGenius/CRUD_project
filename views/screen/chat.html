@@ -1,0 +1,240 @@
+{%extends 'layout.html'%}
+
+{%block content%}
+
+
+
+<main class="chat">
+    {% include 'screen/chatroom.html' %}
+    <section class="chat-content">
+        <div class="chat-content__header">
+            <header>
+                <h1 class="room_title">채팅을 선택해주세요 :)</h1>
+                <a class="chat-back" href="/page/1"><i class="fa-solid fa-angle-left"></i> 뒤로가기</a>
+            </header>
+        </div>
+
+        <section class="chat-content__list"> <!--채팅방 개설되는 곳-->
+            <!-- 여기부터 -->
+
+            <!-- 여기까지 채팅방 한줄 -->
+        </section>
+
+        <div class="chat-content__footer hidden">
+            <input class="chat-content__input" type="text" placeholder="메세지 보내기">
+            <button class="chat-content__button"><i class="fa-regular fa-paper-plane"></i></button>
+        </div>
+    </section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+<script>
+
+
+
+
+
+    var socket = io();
+    let input = $('.chat-content__input')
+    let button = $('.chat-content__button')
+    let room_idx;
+    let my_id;
+
+    //채팅방 목록 누를 시 message 로 방번호 보낸다.
+    $('.chat-roomm__li').click((e) => {
+        $('.chat-content__footer').removeClass('hidden')
+        $('.chat-content__list').html('');
+        $('.chat-room_userbox').html('');
+        $('.chat-room_inv_name').addClass('hidden')
+        $('.chat-room_inv_btn').addClass('hidden')
+        const chatroombox = $(e.currentTarget).closest('.chat-roomm__li'); //현재태그와 가장가까운.chat-roomm__li 클래스 를 가져옴
+
+        room_idx = chatroombox.data('idx'); //채팅방 번호 .chat-roomm__li의 속성 중 data-idx를 가져옴
+        my_id = chatroombox.data('id'); //내 아이디 .chat-roomm__li의 속성 중 data-idx를 가져옴
+        room_title = chatroombox.data('title')
+        console.log(room_idx, my_id,room_title)
+
+        let url = `/chat/message`
+        fetch(url, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                room_idx: room_idx,
+                user_id: my_id,
+            
+            })
+
+        })
+            .then(res => res.json())
+            .then(content => {
+                console.log('채팅방 내용불러오기',content)
+                const result = content
+                result.rows.forEach((i) => {
+                    $(".chat-content__list").append(
+                        //보낸 사람+받는사람 채팅방
+                        `      
+                    <div class="chat-content__li">
+                        <div class="chat-content__box">
+                            <h1 class="chat-content__name">${i.user_name}<h3 class="chat-content__subname">(${i.talker})</h3></h1>
+                            <time class="chat-content__time">${i.talked_at}</time>
+                        </div>
+                        <span class="chat-content__desc">${i.talk}</span>
+                    
+                    `
+                    )
+
+                    $('.chat-content__input').val('');
+                    
+                    
+                    scrollToBottom()
+
+                },$('.room_title').text(room_title))
+        //채팅방 유저 표현해주는 로직
+                    
+                result.user.forEach((a) => {
+                    $('.chat-room_userbox').append(`<li class ="chat-room_userlis"> ${a.user_name}<span class="chat-room_userlis_name"> (${a.room_people})</span> </li>`)
+
+                })
+                $('.chat-room_user_inv').removeClass('hidden')
+                
+
+            }
+            )
+    });
+    //console.log(content.rows[0].talker,content.user[0].room_idx)
+    //채팅방 내용에서 전송버튼 누르면 내용과 채팅방 번호가 보내짐.
+
+    button.click((e) => {
+        let talk = input.val()
+        //scket.io 사용
+        let url = `/chat/save`
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                talk: talk,
+                room_idx: room_idx,
+
+            })
+        })
+            .then(res => res.json())
+            .then(input.val(''))
+    })
+    socket.on('broadcast', (data) => {
+        $(".chat-content__list").append(
+            //보낸 사람+받는사람 채팅방
+            `      
+
+                    <div class="chat-content__li">
+                        <div class="chat-content__box">
+                            <h1 class="chat-content__name">${data.username}<h3 class="chat-content__subname">(${data.userid})</h3></h1>
+                            <time class="chat-content__time">${formattedDate}</time>
+                        </div>
+                        <span class="chat-content__desc">${data.talk}</span>
+                            `
+        ),scrollToBottom()
+    })
+
+
+
+//채팅방 나가기
+$('.chat-room_exit_btn').click((e)=>{
+    console.log("채팅방 나가기",room_idx)
+    let url = '/chat/exit'
+    fetch(url, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                room_idx: room_idx               
+            })
+
+        }).then(window.location.href = "https://connect.aischool.o-r.kr/chat")
+        
+    
+
+})
+
+
+
+//채팅방에서 유저 추가로 초대하기
+$('.chat-room_user_inv').click((e)=>{
+    $('.chat-room_inv_name').removeClass('hidden')
+    $('.chat-room_inv_btn').removeClass('hidden')
+
+})
+
+$('.chat-room_inv_btn').click((e)=>{
+    console.log("챗 추가초대하기",room_idx)
+
+    let user_id = $('.chat-room_inv_name').val()
+    let url = '/chat/chatroom_inv'
+    fetch(url, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            }, 
+            body: JSON.stringify({
+                room_idx: room_idx,
+                user_id:user_id               
+            })
+
+        }).then(res => res.json())
+        .then(res =>{
+            if(res==1){alert('없는 아이디입니다.')}else{
+            console.log(res)
+            $('.chat-room_userbox').append(`<li class ="chat-room_userlis"> ${res[0].user_name}<span class="chat-room_userlis_name">(${res[0].user_id})</span> </li>`)
+            $('.chat-room_inv_name').val('')
+            $('.chat-room_inv_name').addClass('hidden')
+            $('.chat-room_inv_btn').addClass('hidden')
+            
+        }
+        })
+        
+    
+
+})
+
+//enter로 채팅보내기
+    $(document).ready(function () {  //채팅내용 enter 누를 시 전송하기
+        // Enter 키를 눌렀을 때 이벤트 핸들러 추가
+        input.keyup(function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                button.click();
+            }
+        });
+    });
+
+    const date = new Date(); // 월은 0부터 시작하므로 7은 8월을 나타냅니다.
+
+    // 날짜 포맷팅
+    const options = {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true,
+    };
+
+    const dateFormatter = new Intl.DateTimeFormat('en-US', options);
+    const formattedDate = dateFormatter.format(date);
+
+
+
+ //하단고정
+ let chat_content__list = $('.chat-content__list')
+ function scrollToBottom() {
+    chat_content__list.scrollTop(chat_content__list[0].scrollHeight);
+  }
+
+
+</script>
+
+{%endblock%}

@@ -1,0 +1,156 @@
+/* 대장 */
+.banner{
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    overflow: hidden;
+}
+/* slide-container */
+.banner__slide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.6s;
+    width: 300vw;
+    transform: translateX(95vw);
+    
+    
+}
+/* slide-box */
+.banner__box{
+    width: 95vw;
+    box-shadow: 0px 0px 10px 0px gray;
+    margin: 0 10px;
+    border-radius: 10px;
+}
+
+/* slide-box img */
+.banner__content{
+    background-color: var(--main-color);
+    width: 100%;
+    height: 250px;
+    border-radius: 10px;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    padding: 0 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.click__box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.banner__click{
+
+    bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 80px;
+}
+
+.btnone, .btntwo, .btnthree{
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: gray;
+    margin:0;
+}
+.btnone{
+    background-color: black;
+}
+
+.banner__click div:hover{
+    cursor: pointer;
+}
+
+.one{
+    background-color: #050038;
+}
+
+.two{
+    background-color: var(--main-color);
+}
+
+.three{
+    background-color: #FFD02F;
+}
+.banner__text{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   color: white;
+}
+
+.banner__img-box{
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+    filter:alpha(style=2,opacity=100,finishopacity=0);
+    
+}
+.banner__img {
+    width: 150px;
+    height: 150px;
+    margin-left: 50px;
+    z-index: 10;
+}
+
+
+
+
+.banner__title{
+    font-size: 35px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.banner__subtitle{
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom:7px;
+}
+.banner__desc{
+    font-size: 16px;
+    font-weight: 400;
+
+}
+
+.banner__deco{
+    
+    background-color: var(--sub-color4);
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: 150px;
+    right: 375px;
+}
+
+.yelloright{
+    right: 335px;
+}
+.tomato{
+    background-color: rgb(240, 231, 229);
+}
+
+.one1{
+    background-color: #070050;
+}
+
+.one2{
+    background-color: #2f68f7;
+}
+
+.one3{
+    background-color: #FFBA00;
+}
+
+

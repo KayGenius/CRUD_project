@@ -1,0 +1,104 @@
+.logo-picture{
+display: block;
+margin: auto;
+width: 120px;
+height: 80px;
+
+}
+.group__title{
+margin: 60px 0 80px 0 ;
+font-weight: 900;
+font-size: 25px;
+}
+.group__head{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.group-plus__box{
+    position: absolute;
+    top: -10px;
+    left: 20px;
+
+}
+
+.group-plus-btn{
+    background-color: inherit;
+}
+`
+
+.new-task__box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+    
+}
+
+.group-plus__box{
+    position: relative;
+}
+
+.plus__group{
+    position: absolute;
+    background-color: white;
+    list-style: none;
+    height: 200px;
+    width: 170px;
+    color: black;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    border-radius: 5px;
+}
+.plus__group__user{
+    display: flex;
+    flex-wrap: wrap;
+    width: 140px;
+    justify-content: flex-start;
+    align-items: center;
+}
+.hidden{
+    display: none;
+}
+
+.group-invite:hover{
+    cursor: pointer;
+}
+.group_inv_name{
+    width: 130px;
+    border: none;
+}
+.group__nav{
+display: flex;
+width:1200px;
+align-items: center;
+justify-content: space-between;
+font-weight: 700;
+font-size: 20px;
+}
+.group__nav div{
+width: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+height: 70px;
+border-radius: 10px;
+}
+
+
+
+.group{
+display: flex;
+flex-direction: column;
+align-items: center;
+height: 70vw;
+
+}
+
+/* 공지사항 */

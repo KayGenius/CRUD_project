@@ -1,0 +1,96 @@
+{% extends 'layout.html' %}
+{% block content %}
+<section class="team">
+
+    <div class="team-make">
+        <img src="/img/logo.png" class="team__logo" alt="">
+        <div class="search-container">
+            <input type="text" placeholder="이름을 검색해보세요!" class="search-input" id="user_search">
+            <button class="search-btn" id="search_btn">검색</button>
+        </div>
+        <div class="user_search"></div>
+        <div class="team__add">
+            <input type="text" style="display:none;" value="{{params}}" name="chat_idx" class="chat_idx">
+            <input type="text" placeholder="팀원을 초대해주세요 :)" name="chat_inv" class="chat_invite">
+            <button class="AddBtn" type="button">추가</button>
+        </div>
+        <div class="invite__user">
+
+        </div>
+        <a href="/chat"><button class="inviteBtn" type="button">초대하기</button></a>
+    </div>
+
+</section>
+<script>
+
+    $('.AddBtn').click((e) => {
+        let url = '/chat/chat_inv'
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                room_idx: $('.chat_idx').val(),
+                invite: $('.chat_invite').val()
+            })
+        })
+            .then(res => res.json()) // (res) =>{(return res.json)}
+            .then(res => {                        //채팅방 생성하면 생신 룸번호를 가져옴. 이걸 다시 노드에 보내줘야함.
+                console.log(res)
+                if (res == "1") {
+                    alert("해당하는 회원이 없습니다")
+                } else {
+                    $('.invite__user').append(`<span>${res}</span>`)
+                }
+                $('.chat_invite').val('')
+            }
+
+            )
+    })
+
+
+    $(document).ready(function () {  //채팅내용 enter 누를 시 전송하기
+        // Enter 키를 눌렀을 때 이벤트 핸들러 추가
+        $('.chat_invite').keyup(function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                $('.AddBtn').click();
+            }
+        });
+    });
+    // 그룹원 검색
+    $('#search_btn').click((e) => {
+        let user_name = $('#user_search').val()
+        let url = '/user_search'
+        $('.user_search').html('');
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user_name: user_name
+            })
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                console.log(res.search)
+                if (res == '아이디가 존재하지 않네요😥') {
+                    $('.user_search').text(res);
+                } else {
+                        for(i = 0 ; i <= res.search.length ; i++){
+
+                 
+                    $('.user_search').append(`<span>아이디:  ${res.search[i].user_id}  
+                        반(과정): ${res.search[i].user_class}</span><br><br>`);
+                }}
+
+
+            });
+
+    })
+
+
+</script>
+{% endblock %}

@@ -1,0 +1,143 @@
+.board{
+    width: 250px;
+    height: 280px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.25);
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    margin: 20px 30px;
+
+}
+
+
+
+.board:hover{
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.25);
+}
+
+.board__footer{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    font-weight: bold;
+    align-items: center;
+    border-top:2px solid rgba(0,0,0,0.25);
+    padding: 0 2px;
+    padding-top:10px;
+    
+}
+
+.board__head{
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+}
+
+
+.board__group{
+    padding: 4px 10px;
+    font-size: 16px;
+    background-color:var(--sub-color1);
+    width: auto;
+    border-radius: 10px;
+    color:  var(--sub-color8);
+    height: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.free{
+    background-color: var(--sub-color3);
+    color: var(--main-color);
+}
+
+.board__group1{
+    padding: 4px 10px;
+    font-size: 16px;
+    background-color:var(--sub-color1);
+    width: auto;
+    border-radius: 10px;
+    color:  var(--sub-color8);
+    height: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--sub-color3);
+    color: var(--main-color);
+}
+
+
+.board__stack span{
+    font-size: 13px;
+    padding:3px 10px;
+    background-color: var(--sub-color3);
+    color: var(--main-color);
+    display: flex;
+    align-items: center;
+    border-radius:10px ;
+    margin-right: 5px;
+    justify-content: center;
+    font-weight: bold;
+    
+}
+
+.board__title{
+    font-size: 17px;
+    font-weight: bold;
+}
+
+
+.board__deadline{
+    margin-top: 13px;
+    font-size: 14px;
+    color: var(--sub-text);
+    font-weight: 400;
+}
+
+
+.board__desc{
+    font-size: 12px;
+    font-weight: 400;
+}
+
+
+.board__stack div{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.board__stack--title{
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.board__footer{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.board__footer span{
+    color: #999999;
+}
+/* 수정됨 */
+
+
+.board__middle{
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+}
+.board__title1{
+    margin-bottom: 30px;
+    margin-top:10px;
+    font-size: 16px;
+    font-weight: bold;
+}

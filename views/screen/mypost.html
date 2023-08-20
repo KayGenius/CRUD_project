@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+{% include 'components/header.html' %}
+<main class="mypage">
+    {%if data[0] == undefined%}
+    <h1>내 활동</h1>
+    <h3 class="team__no">아직 작성하신 글이 없으시네요 🥲</h3>
+    <div class="team__flex">
+        <a class="mypage__button" href="/page/1">홈으로</a>
+        <a class="mypage__button cedeff" href="/write">작성하기</a>
+    </div>
+
+
+    {%else%}
+    <h1>작성글</h1>
+
+    <section class="mypageboard__box">
+        {%for i in data%}
+        <a class="mypageboard" href="/detail?a={{ i.b_idx }}" style="color: black;">
+            <span>{{i.b_type}}</span>
+            <h1>{{i.b_title | stripHtmlTags | truncate(10)}}</h1>
+            <h2 style="width: 170px;">{{i.b_content | stripHtmlTags | truncate(20)}}</h2>
+
+        </a>
+        {%endfor%}
+    </section>
+    <div class="team__flex">
+        <a class="mypage__button" href="/page/1">홈으로</a>
+        <a class="mypage__button cedeff" href="/write">작성하기</a>
+    </div>
+    {%endif%}
+
+</main>
+{% include 'components/footer.html' %}
+{% endblock %}

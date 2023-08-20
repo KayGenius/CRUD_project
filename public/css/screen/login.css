@@ -1,0 +1,106 @@
+.login-box{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+    width: 100%;
+}
+
+
+.login__alert{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+.login{
+    display: flex;
+    align-items: center;
+    height: 500px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.25);
+    border-radius: 10px;
+
+
+}
+
+.login img{
+        border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+}
+
+.login form, .login img{
+    width: 400px;
+    height: 500px;
+    
+    
+}
+
+.login form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 50px;
+}
+
+.login__title{
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    
+}
+
+.login__inputs{
+    margin-bottom: 30px;
+}
+
+.login__inputs input{
+    height: 45px;
+    width: 300px;
+    margin: 7px 0;
+    border: none;
+    background-color: #F8F9FD;
+    border-radius: 10px;
+    padding-left: 20px;
+}
+
+.login__buttons button{
+    height: 45px;
+    width: 300px;
+    margin-bottom:15px;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.login__btnn{
+    background-color: #5A81FA;
+}
+
+.login__joinbtn{
+    color: white;
+    background-color: #CEDEFF;
+    
+    height: 45px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom:15px;
+}
+
+.login__gitbtn{
+    background-color: black;
+        height: 45px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.login__gitbtn span{
+    margin-left: 5px;
+}

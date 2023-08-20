@@ -1,0 +1,293 @@
+.detail{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:70px;
+    width: 100%;
+    
+}
+
+.detail__box{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.detail__title{
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom:30px;
+    width: 600px;
+}
+
+.detail__info{
+    font-size: 17px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    
+    margin-bottom: 30px;
+    
+}
+
+.detail__info span{
+    width: auto;
+    margin-right: 10px;
+    color: #1F1F1F;
+    font-weight: 700;
+
+}
+
+.detail__info time{
+    width: auto;
+    color: #999;
+    
+}
+
+.detail__ud{
+    font-size: 17px;
+    width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--border-color);
+    margin-bottom: 50px;
+}
+
+.detail__table{
+    font-size: 20px;
+    font-weight: 600;
+
+    margin-bottom: 35px;
+}
+.detail__table tr{
+    display: block;
+    margin-bottom:10px;
+}
+
+.detail__table--title{
+    width: 100px ;
+}
+
+.detail__table--desc{
+    width: 300px ;
+}
+
+
+.detail__desc{
+    font-size: 16px;
+    line-height: 1.4;
+    height: auto;
+    margin-bottom: 70px;
+    width: 600px;
+}
+
+.detail__buttons{
+    width: 80px;
+    height: 25px;
+    border: #e0e0e0 solid 1px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+    margin-top:30px;
+}
+.detail__buttons button{
+    background-color: inherit;
+    font-weight: 700;
+    padding: 0 5px 0 0;
+    
+}
+
+.detail__like{
+    margin-left: 5px;
+}
+
+
+.detail__msg{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+
+.detail__msg--title{
+    font-size: 15px;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+
+
+.detail__msg--input{
+    width: 600px;
+    height: 50px;
+    border: none;
+    background-color: #F8F9FD;
+    border-radius: 10px;
+    padding: 0;
+    
+}
+
+#delete-post-btn{
+    margin: 10px;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.msg__box{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    width: 600px;
+    margin-bottom:20px;
+}
+
+.detail__msg--num{
+    color: #5A81FA;
+    
+}
+
+.detail__msg--btn{
+    height: 30px;
+    width: 70px;
+    background-color: #5A81FA;
+    color: white;
+    font-size: 17px;
+    float: right;
+    border-radius: 5px;
+    margin-top:10px;
+    
+}
+/* 수정함 */
+.detail__msg--input,
+.detail__msg--btn {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 5px; /* 높이 값 감소 */
+}
+
+.detail__msg-list{
+    margin-bottom: 100px;
+    
+    
+    width: 80%;
+    margin: 0;
+}
+
+.detail__msg-list h1{
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.detail__msg-list span{
+    font-size: 14px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.detail__msg-list p{
+    font-size: 15px;
+    margin-bottom:10px;
+}
+
+.detail__msg-list button{
+    font-size: 15px;
+    background-color: inherit;
+    color: var(--main-color);
+}
+
+/* 새로고침 호버값 */
+.wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    margin-bottom: 5px;
+    visibility: hidden;
+
+    
+  }
+  
+  .coment-icon,
+  .coment-icon-hover {
+    position: absolute;
+    transition: opacity 0.3s;
+  }
+  
+  .coment-icon-hover {
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .wrapper:hover .coment-icon {
+    opacity: 0;
+  }
+  
+  .wrapper:hover .coment-icon-hover {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* CSS 댓글창*/
+  .comment-container {
+    font-family: Arial, sans-serif;
+    width: 600px;
+    margin: auto;
+    background-color: #F8F9FD;
+    padding: 20px 20px 10px 20px; /* bottom 패딩을 5px에서 10px로 변경 */
+    border-radius: 5px;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1);
+    
+}
+
+.comment-container:last-child{
+    margin-bottom: 70px;
+}
+
+.comment {
+    padding-bottom: 0;
+    margin-bottom: 10px; /* 모든 댓글 간 여백 설정 */
+    display: flex;
+    align-items: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.comment:last-child {
+    /* 마지막 댓글에 대한 추가 스타일 */
+    padding-bottom: 0;
+    margin-bottom: 10px; /* 마지막 댓글의 여백을 다른 댓글과 동일하게 */
+}
+
+.user-name {
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.comment-date {
+    font-size: 14px;
+    color: #999;
+}
+
+.comment-content {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.comment-separator {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.detail__msg-list {
+    list-style: none;
+    padding: 20;
+    margin: 0;
+}

@@ -1,0 +1,119 @@
+<section class="canvan__write hidden">
+    <form action="/group/canvan" class="canvan__form" method="post">
+        <button class="canvan__write__close" type="button"><i class="fa-solid fa-xmark"></i></button>
+
+        <div>
+            <input type="text" id="todo" name="todo" placeholder="할 일을 정해주세요" required>
+        </div>
+        <div>
+
+            <input type="date" id="deadline" placeholder="데드라인을 정해주세요." name="deadline" required>
+        </div>
+        <div>
+
+            <input type="text" id="member" placeholder="미션을 실행할 멤버를 정해주세요." name="member" required>
+            <input type="text" style="display:none;" value="{{group}}" name="group_idx">
+        </div>
+        <section class="canvan__btn__box">
+            <button class="canvan__btn" type="submit">작성하기</button>
+        </section>
+    </form>
+</section>
+
+<div>
+
+    <div class="new-task__box">
+        <button class="add-new-task-btn"><i class="fa-solid fa-plus"></i> 리스트</button>
+    </div>
+    <section class="canvan">
+
+
+
+        <section class="todo">
+            <h1>Todo</h1>
+
+            <ul class="todo__list" data-id="todo">
+                {% for i in to %}
+                {% if i.in_process == '0' %}
+                <li class="todo__list__li" draggable="true" data-id="{{i.process_idx}}">
+                    <div class="list__head">
+                        <h3 class="list__title">{{i.todo}}</h3>
+                        <button class="list__menu-btn"><i class="fa-regular fa-hand"></i></button>
+                    </div>
+                    <div class="list__footer">
+                        <span class="list__user">{{i.member}}</span>
+                        <time class="list__deadline">~{{i.formattedDeadline}}</time>
+                    </div>
+                    <div class="list__buttons hidden">
+                        <!-- <button class="list__btn--pro">In progress</button>
+                    <button class="list__btn--done">Done</button> -->
+
+                        <button class="list__delete-btn" data-id="{{i.process_idx}}"><i
+                                class="fa-solid fa-trash"></i></button>
+                        <button class="list__edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                    </div>
+                </li>
+                {% endif %}
+                {% endfor %}
+
+
+            </ul>
+        </section>
+        <section class="progress">
+            <h1> In progress</h1>
+            <ul class="progress__list" data-id="progress">
+                {% for i in to %}
+                {% if i.in_process == '1' %} <li class="todo__list__li" draggable="true" data-id="{{i.process_idx}}">
+                    <div class="list__head">
+                        <h3 class="list__title">{{i.todo}}</h3>
+                        <button class="list__menu-btn"><i class="fa-regular fa-hand"></i></button>
+                    </div>
+                    <div class="list__footer">
+                        <span class="list__user">{{i.member}}</span>
+                        <time class="list__deadline">~{{i.formattedDeadline}}</time>
+                    </div>
+                    <div class="list__buttons hidden">
+                        <!-- <button class="list__btn--pro">In progress</button>
+                                        <button class="list__btn--done">Done</button> -->
+
+                        <button class="list__delete-btn" data-id="{{i.process_idx}}"><i
+                                class="fa-solid fa-trash"></i></button>
+                        <button class="list__edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                    </div>
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </section>
+        <section class="done">
+            <h1>Done</h1>
+            <ul class="done__list" data-id="done">
+                {% for i in to %}
+                {% if i.in_process == '2' %}
+                <li class="todo__list__li" draggable="true" data-id="{{i.process_idx}}">
+                    <div class="list__head">
+                        <h3 class="list__title">{{i.todo}}</h3>
+                        <button class="list__menu-btn"><i class="fa-regular fa-hand"></i></button>
+                    </div>
+                    <div class="list__footer">
+                        <span class="list__user">{{i.member}}</span>
+                        <time class="list__deadline">~{{i.formattedDeadline}}</time>
+                    </div>
+                    <div class="list__buttons hidden">
+                        <!-- <button class="list__btn--pro">In progress</button>
+                                        <button class="list__btn--done">Done</button> -->
+
+                        <button class="list__delete-btn" data-id="{{i.process_idx}}"><i
+                                class="fa-solid fa-trash"></i></button>
+                        <button class="list__edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                    </div>
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </section>
+
+
+    </section>
+</div>
+<script src="js/components/canvan.js"></script>

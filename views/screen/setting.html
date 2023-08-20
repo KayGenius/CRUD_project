@@ -1,0 +1,132 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% include 'components/header.html' %}
+
+<main class="setting">
+  <div class="member__info__box">
+    <img class="setting-logo" src="/img/logo.png" />
+
+    <h4 class="setting__title">나의 정보</h4>
+    <div class="box__input__info">
+
+      <h1 id="setting__userid">{{obj.user_id}}</h1>
+      <input type="text" class='input-class' placeholder="이름" value={{obj.user_name}}>
+      <input type="text" class='input-class' placeholder="깃허브 아이디" value={{obj.user_email}}>
+      <input type="text" class='input-class' placeholder="핸드폰번호" value={{obj.user_phone}}>
+      <select name="process1" class='input-class'>
+        <option value={{obj.user_class}} selected>{{obj.user_class}}</option>
+        <option value="JS">JS</option>
+        <option value="APP">App</option>
+        <option value="Spring">Spring</option>
+        <option value="클라우드">클라우드</option>
+        <option value="사물지능">사물지능</option>
+        <option value="시각지능">시각지능</option>
+        <option value="언어지능">언어지능</option>
+      </select>
+    </div>
+
+    <div class="change__buttons">
+      <button class="change__button" id="saveButton">변경하기</button>
+      <button class="change__button delete" onclick="deleteUser()">탈퇴하기</button>
+    </div>
+  </div>
+</main>
+{% include 'components/footer.html' %}
+
+<script>
+  // 회원 탈퇴 Fetch
+  let urlcloud = 'https://connect.aischool.o-r.kr/'
+
+  function deleteUser() {
+    if (!confirm('정말로 탈퇴하시겠습니까?')) {
+      return;
+    }
+    const Id = document.getElementById('id');
+    const userId = Id.textContent;
+    fetch(`${url}user/delete_user`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userId: userId }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+
+        if (res) {
+          location.href = `${url}`;
+        }
+      });
+  }
+
+  // 수정
+
+
+  const saveButton = document.getElementById('saveButton')
+  const inputField = document.querySelectorAll('.input-class');
+
+
+
+
+
+
+
+
+  let changedName;
+  let changedGit;
+  let changedPhone;
+  let changedProcess;
+
+
+
+  const changeData = () => {
+    changedName = inputField[0].value;
+    changedGit = inputField[1].value;
+    changedPhone = inputField[2].value;
+    changedProcess = inputField[3].value;
+  };
+
+
+
+
+  // 저장
+  const completeUpdate = () => {
+    console.log(changedName, changedGit, changedPhone, changedProcess);
+
+    let url = `${urlcloud}user/modify`;
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: changedName,
+        git: changedGit,
+        phone: changedPhone,
+        process1: changedProcess,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+
+        if (res.msg == 'success') {
+          alert('변경성공');
+        } else {
+          alert('변경실패!');
+        }
+        let urlsetting = 'https://connect.aischool.o-r.kr/'
+        location.href = `${urlsetting}user/setting`;
+      });
+  };
+
+  saveButton.addEventListener('click', () => {
+    changeData()
+    completeUpdate()
+
+  })
+</script>
+
+{% endblock %}

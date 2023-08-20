@@ -1,0 +1,249 @@
+{% extends 'layout.html'%}
+{% block content %}
+{% include 'components/header.html' %}
+
+
+<main class="detail">
+    <section class="detail__box">
+        {%for i in data%}
+        <h1 class="detail__title">{{i.b_title}}</h1>
+        <div class="detail__info">
+            <span>{{i.user_name}}</span>
+            <time class="post-date" data-date="{{ i.created_at }}">-</time>
+
+            {% if obj and obj.user_id == i.user_id %}
+            <span id="delete-post-btn" style="cursor: pointer;">삭제</span>
+            {% endif %}
+        </div>
+
+        <table class="detail__table">
+            {%if i.b_type == '모집'%}
+            <tr>
+                <td class="detail__table--title">모집구분</td>
+                <td class="detail__table--desc" data-array="{{ i.b_category }}" data-index="0">-</td>
+            </tr>
+            <tr>
+                <td class="detail__table--title">마감일</td>
+                <td class="detail__table--desc" data-array="{{ i.b_category }}" data-index="2">-</td>
+            </tr>
+            <tr>
+                <td class="detail__table--title">모집인원</td>
+                <td class="detail__table--desc" data-array="{{ i.b_category }}" data-index="1" data-prepend="명">-</td>
+            </tr>
+            <tr>
+                <td class="detail__table--title">기술스택</td>
+                <!-- data-index = 배열의 3번째다 -->
+                <td class="detail__table--desc" data-array="{{ i.b_category }}" data-index="3"></td>
+            </tr>
+            {%else %}
+            {%endif%}
+        </table>
+        <section class="detail__desc">
+            {{ i.b_content|safe}}
+        </section>
+        <div class="detail__buttons">
+            <button type="button" class="detail-like__btn"><i class="fa-regular fa-heart"></i><span
+                    class="detail__like">공감</span></button>
+
+            <a href="https://github.com/{{ data[0].user_email }}" target="_blank"><i class="fab fa-github"></i></a>
+
+        </div>
+        <form class="detail__msg" action="/addComment" method="POST">
+            <h1 class="detail__msg--title">댓글 <span class="detail__msg--num">{{commentCount}}</span>
+                <span class="wrapper">
+                    <i class="fa-solid fa-rotate-right fa-lg coment-icon" style="color: #000000;"></i>
+                    <i class="fa-solid fa-rotate-right fa-spin fa-lg coment-icon-hover" style="color: #000000;"></i>
+                </span>
+            </h1>
+            <input type="hidden" name="post_idx" value="{{ data[0].b_idx }}" />
+            <input type="hidden" name="loginUser" id="loginUser" value="{{ loginUser.user_id }}" />
+            <div class="msg__box">
+                <input class="detail__msg--input" type="text" name="content" required />
+                <button class="detail__msg--btn" type="submit">등록</button>
+            </div>
+        </form>
+        <ul class="detail__msg-list">
+            {% if comments.length > 0 %}
+            {% for comment in comments %}
+            <li class="comment-container">
+                <div class="comment-header">
+                    <span class="user-name">{{ comment.user_name }}</span>
+                </div>
+                <p class="comment-content">{{ comment.cmt_content }}</p>
+                <div class="comment-footer">
+                    <span class="comment-date" data-date="{{ comment.created_at }}">-</span>
+                </div>
+            </li>
+            {% if not loop.last %}
+            <div class="comment-separator"></div>
+            {% endif %}
+            </div>
+            {% endfor %}
+            </div>
+            {% else %}
+            <p>댓글이 존재하지 않습니다.</p>
+            {% endif %}
+        </ul>
+        {%endfor%}
+    </section>
+
+</main>
+{% include "components/footer.html" %}
+<script>
+    const likeBtn = document.querySelector('.detail-like__btn');
+    let isLiked = false;
+
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchLikeStatus(); // 페이지 로딩 후 좋아요 상태를 가져옵니다.
+    });
+
+    likeBtn.addEventListener('click', () => {
+        if (!isLiked) {
+            likeBtn.innerHTML = `<i class="fa-solid fa-heart"></i><span class="detail__like">공감</span>`;
+        } else {
+            likeBtn.innerHTML = `<i class="fa-regular fa-heart"></i><span class="detail__like">공감</span>`;
+        }
+        isLiked = !isLiked;
+        // 좋아요 상태 변경사항을 서버에 알리세요. (예: 호출 API 업데이트/삭제)
+    });
+
+    function fetchLikeStatus() {
+        const post_id = '{{ data[0].b_idx }}';
+        const user_id = document.querySelector('#loginUser').value;
+
+        fetch('/check_user_likes', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ post_idx: post_id, user_id: user_id }),
+        })
+            .then((response) => response.json())
+            .then((result) => {
+                if (result.isLiked) {
+                    isLiked = true;
+                    likeBtn.innerHTML = `<i class="fa-solid fa-heart"></i><span class="detail__like">공감</span>`;
+                }
+            });
+    }
+
+
+    function populateElement(element) {
+        const dataArrayRaw = element.getAttribute('data-array');
+        const dataIndex = parseInt(element.getAttribute('data-index'), 10);
+        const prependValue = element.getAttribute('data-prepend') || '';
+        const dataArray = JSON.parse(dataArrayRaw);
+        const displayValue = prependValue + dataArray[dataIndex];
+        const displayValue2 = dataArray[dataIndex] + prependValue;
+        element.innerHTML = displayValue;
+        element.innerHTML = displayValue2;
+    }
+
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        const formatter = new Intl.DateTimeFormat('ko-KR', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+        });
+
+        return formatter.format(date);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const customElements = document.querySelectorAll('.board__group, .board__deadline, .detail__table--desc');
+        customElements.forEach((element) => {
+            populateElement(element);
+        });
+
+        const postDateElements = document.querySelectorAll('.post-date');
+        postDateElements.forEach((element) => {
+            const rawDate = element.getAttribute('data-date');
+            const formattedDate = formatDate(rawDate);
+            element.textContent = formattedDate;
+        });
+
+        const commentDateElements = document.querySelectorAll('.comment-date');
+        commentDateElements.forEach((element) => {
+            const rawDate = element.getAttribute('data-date');
+            const formattedDate = formatDate(rawDate);
+            element.textContent = formattedDate;
+        });
+    });
+
+    function populateStack(element) {
+        const dataArrayRaw = element.getAttribute('data-array');
+        const dataArray = JSON.parse(dataArrayRaw);
+        const stackArray = dataArray[3];
+
+        stackArray.forEach(stack => {
+            const stackSpan = document.createElement('span');
+            stackSpan.textContent = stack;
+            element.appendChild(stackSpan);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const customElements = document.querySelectorAll('.board__group, .board__deadline, .detail__table--desc, .board__stack div');
+        customElements.forEach((element) => {
+            if (element.matches('.board__stack div')) {
+                populateStack(element);
+            } else {
+                populateElement(element);
+            }
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const deletePostBtn = document.querySelector("#delete-post-btn");
+        if (deletePostBtn) {
+            deletePostBtn.addEventListener("click", handleDeletePost);
+            async function handleDeletePost() {
+                const postIdx = document.querySelector('input[name="post_idx"]').value;
+
+                // 확인 대화 상자 추가
+                if (!confirm("삭제?")) {
+                    return;
+                }
+
+                const response = await fetch(`/deletePost/${postIdx}`, {
+                    method: 'DELETE',
+                });
+                if (response.ok) {
+                    alert('글이 성공적으로 삭제되었습니다.');
+                    window.location.href = '/page/1' // 또는 다른 페이지로 이동
+                } else {
+                    alert('글 삭제 중 오류가 발생했습니다.');
+                }
+            }
+        }
+    });
+
+    const postIdx = '{{ data[0].b_idx }}'; // 게시물 ID 가져오기
+    // ... postIdx 변수 선언 이후
+    document.querySelector('.detail-like__btn').addEventListener('click', function () {
+        const post_id = postIdx;
+
+        fetch('/increment_likes', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ post_idx: post_id }),
+        })
+            .then((response) => {
+                if (response.ok) {
+                    // 좋아요가 성공적으로 적용되면 구현할 내용 작성
+                } else {
+                    // 좋아요 에러 처리
+                }
+            })
+            .catch((error) => {
+                // fetch 에러 처리
+            });
+    });
+</script>
+{% endblock %}

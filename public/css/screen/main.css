@@ -1,0 +1,34 @@
+.main{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.25);
+    padding-top:50px;
+    margin-top:50px
+
+}
+.main__board{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-left: 25px;
+    
+}
+.main__board-flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.main__search ul{
+    display: flex;
+
+}
+
+
+

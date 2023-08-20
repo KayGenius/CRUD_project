@@ -1,0 +1,167 @@
+.team{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    height: 100vh;
+    width: 100%;
+
+}
+.team__no{
+    font-size: 20px;
+    margin-top:100px;
+    font-weight: 600;
+}
+
+.team__logo{
+    width: 70px;
+    height: 30px;
+}
+
+.chat_invite{
+    margin-right: 10px;
+}
+
+.team-make{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.25);
+    height: 600px;
+    width: 480px;
+    border-radius: 10px;
+    padding: 10px 0;
+}
+
+
+.team-make input{
+    height: 50px;
+    width: 420px;
+    border: none;
+    background-color: #F4F4F4;
+    border-radius: 10px;
+    padding-left: 20px;
+    border:none;
+
+}
+
+.team-make button{
+    width: 420px;
+    height: 50px;
+    border: none;
+    background-color: #5A81FA;
+    border-radius: 10px;
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+    margin-top:10px;
+
+}
+
+
+
+.team__logo{
+    height: 40px;
+    width: 70px;
+}
+
+
+
+.team-invite{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.25);
+    height: 480px;
+    width: 480px;
+    border-radius: 10px;
+    padding: 10px 0;
+}
+
+.team-invite input{
+    height: 50px;
+    width: 80%;
+    border: none;
+    background-color: #F4F4F4;
+    border-radius: 10px;
+    padding-left: 20px;
+
+}
+
+
+
+.inviteBtn{
+    width: 420px;
+    height: 50px;
+    border: none;
+    background-color: #5A81FA;
+    border-radius: 10px;
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+    margin-top:10px;
+}
+.search-input{
+
+}
+.AddBtn,.search-btn{
+    width: 85px !important; 
+    height: 50px;
+    background-color: #5A81FA;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    margin: 0 !important;
+    margin-left: 10px;
+}
+
+.team__add{
+    display: flex;
+    align-items: center;
+    width: 420px;
+    justify-content: center;
+    height: 50px;
+}
+.search-container{
+        display: flex;
+    align-items: center;
+    width: 420px;
+    justify-content: center;
+    height: 50px;
+}
+
+.user_id, .search-input{
+    border: none;
+    width: 80%;
+    background-color: var(--input-color) !important;
+    height: 50px;
+    padding-left: 20px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.invite__user{
+    width: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    
+}
+
+.invite__user span{
+    width: auto;
+    height: auto;
+    background-color: var(--input-color);
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-weight: 700;
+}
+
+.user_search{
+    font-weight: 700;
+}

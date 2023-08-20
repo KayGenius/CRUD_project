@@ -1,0 +1,115 @@
+.mypage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 77vh;
+}
+
+.mypage h1{
+    font-size: 30px;
+    margin: 30px;
+    font-weight: bold;
+    
+    
+}
+.mypage h3{
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
+.mypage img{
+    height: 600px;
+    width: 600px;
+    border-radius: 10px;
+}
+
+.mypage__button{
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #5A81FA;
+    color: white;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    justify-content: center;
+    
+    margin: 0 5px 30px 5px;
+    font-weight: 700;
+}
+
+
+.cedeff{
+    background-color: var(--sub-color1);
+    color: white;
+}
+
+.mypageboard{
+    height: 300px;
+    width: 250px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.25);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    position: relative;
+
+}
+
+.mypageboard span{
+    width: 200px;
+    height: 30px;
+    background-color: #5A81FA;
+    color: white;
+    padding: 5px;
+    border-radius: 15px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    position: absolute;
+    top: 20px;
+    right: inherit;
+}
+
+.mypageboard h1{
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+
+.mypageboard p{
+    position: absolute;
+    bottom: 20px;
+    right: inherit;
+    font-weight: 700;
+}
+.mypageboard__box {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 90vw;
+    flex-wrap: wrap;
+    height: 400px;
+    overflow: scroll;
+    margin-bottom: 40px;
+}
+
+.mypageboard__box::-webkit-scrollbar, .progress__list::-webkit-scrollbar,.done__list::-webkit-scrollbar {
+  display: none;
+}
+
+.mypageboard__box a {
+    text-decoration: none;
+}
+
+.team__flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 300px;
+}
+

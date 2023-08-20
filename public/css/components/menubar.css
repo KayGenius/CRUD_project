@@ -1,0 +1,159 @@
+.menu-page{
+    display: flex;
+}
+
+
+.nav__black {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1; /* .nav__black를 .menu-bar 밑으로 배치 */
+}
+
+.show-nav{
+    display: inline-block;
+}
+
+
+
+
+.menu-bar {
+    font-weight: 700;
+    background-color: white;
+    position: fixed;
+    z-index: 2;
+    height: 1000px;
+    transition: all 0.3s ease-in;
+    width: 0;
+    overflow: hidden;
+    transform: translateX(-160px); 
+
+    
+    
+}
+
+
+.show-menu {   
+    width: 200px;
+    transform: translateX(0); 
+}
+
+.menu-bar__title{
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+
+.menu-bar__head{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-top: 20px;
+    
+    
+}
+
+.menu-bar__buttons{
+    margin-bottom:20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+    
+}
+
+.menu-bar__buttons div{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    font-size: 13px;
+    align-items: center;
+    width: 100%;
+}
+.menu-bar__buttons button{
+    border: none;
+    color: black;
+    background-color: inherit;
+    font-size: 22px;
+    margin:10px;
+}
+.menu-bar__buttons span{
+    width: 60px;
+    text-align: center;
+}
+
+
+.menu-bar__head h1{
+    width: 200px;
+    font-size: 22px;
+    
+}
+.menu-bar__close{
+    border: none;
+    background-color: inherit;
+    font-size: 15px;
+    color: #fcfcfc;
+    
+    
+}
+
+
+.menu-bar__list{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 10px;
+    list-style: none;
+}
+
+
+
+.menu-bar__list a{
+    color: black;
+}
+
+.menu-bar__list li{
+    font-size: 19px;
+    margin-bottom: 20px;
+    
+}
+
+
+
+.menu-bar__list--black a{
+    color:black;
+    font-size: 20px;
+}
+
+.menu-bar__buttons a{
+    color: black;
+}
+
+.menu-bar__top{
+    background-color: var(--main-color);
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 14px;
+    color: white;
+}
+
+.menubar__logo{
+    height: 35px;
+    width: 60px;
+}
+
+.menu-bar__footer{
+    margin-top:30px;
+    position: absolute;
+    bottom: 70px;
+    
+
+}

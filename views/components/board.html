@@ -1,0 +1,131 @@
+{%for board in data%}
+{%if board.b_type == '모집'%}
+<a href="/detail?a={{ board.b_idx }}" class="post_idx" style=" color: black;">
+    <section class="board">
+        <div class="board__head">
+            <span class="board__group" data-array="{{board.b_category}}" data-index="0" data-prepend="☝🏻 "></span>
+            <time class="board__deadline" data-array="{{board.b_category}}" data-prepend="마감일 | "
+                data-index="2">-</time>
+
+        </div>
+        <h1 class="board__title">{{board.b_title}}</h1>
+        <p class="board__desc">{{ board.b_content | stripHtmlTags | truncate(30) }}</p>
+        <div class="board__stack">
+            <div data-array="{{board.b_category}}">
+            </div>
+        </div>
+        {%else%}
+        <a href="/detail?a={{ board.b_idx }}" class="post_idx" style=" color: black;">
+            <section class="board">
+                <div class="board__head">
+                    <span class="board__group1">
+                        📋&nbsp;게시판
+                    </span>
+                </div>
+                <div class="board__middle">
+                    <h1 class="board__title1">{{board.b_title}}</h1>
+                    <p class="board__desc">{{ board.b_content | stripHtmlTags | truncate(20) }}</p>
+                </div>
+                {%endif%}
+                <div class="board__footer">
+                    <h5 class="board__name">{{board.user_name}}</h5>
+                    <div>
+                        <span class="board__like"><i class="fa-regular fa-eye"></i></span>
+                        <span class="board__like">{{board.b_views}}</span>
+
+                        <span class="board__view"><i class="fa-solid fa-heart"></i></span>
+                        <span class="board__view">{{board.b_likes}}</span>
+
+
+                    </div>
+                </div>
+            </section>
+        </a>
+
+        {%endfor%}
+
+
+
+        <script>
+            // JavaScript로 데이터 속성의 값을 가져옵니다.
+            const category = document.querySelector('.board__group').getAttribute('data-array');
+
+            // 카테고리에 따라 아이콘을 결정합니다.
+            let icon = '';
+            if (category === '프로젝트') {
+                icon = '🚀 ';
+            } else if (category === '스터디') {
+                icon = '✏️ ';
+            } else if (category === '공모전') {
+                icon = '💻 ';
+            }
+
+            // 아이콘을 포함한 텍스트로 변경합니다.
+            const spanElement = document.querySelector('.board__group');
+            spanElement.textContent = icon + spanElement.textContent;
+            function populateElement(element) {
+                // data-array, data-index 및 data-prepend 속성에서 값을 가져온 다음 파싱합니다.
+                const dataArrayRaw = element.getAttribute('data-array');
+                const dataIndex = parseInt(element.getAttribute('data-index'), 10);
+                const prependValue = element.getAttribute('data-prepend') || ''; // prepend 값을 가져오거나 빈 문자열 사용
+                const dataArray = JSON.parse(dataArrayRaw);
+
+                // 원하는 값을 추출하고 "~"를 추가한 후 표시합니다.
+                const displayValue = prependValue + dataArray[dataIndex];
+                element.textContent = displayValue;
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                // 선택한 요소 처리
+                const customElements = document.querySelectorAll('.board__group, .board__deadline, .detail__table--desc');
+                customElements.forEach((element) => {
+                    populateElement(element);
+                });
+            });
+
+            function formatDate(dateString) {
+                const date = new Date(dateString);
+                const formatter = new Intl.DateTimeFormat('ko-KR', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+
+                return formatter.format(date);
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const postDateElements = document.querySelectorAll('.post-date');
+                postDateElements.forEach((element) => {
+                    const rawDate = element.getAttribute('data-date');
+                    const formattedDate = formatDate(rawDate);
+                    element.textContent = formattedDate;
+                });
+            });
+            //stack 추가 표시
+            function populateStack(element) {
+                const dataArrayRaw = element.getAttribute('data-array');
+                const dataArray = JSON.parse(dataArrayRaw);
+                const stackArray = dataArray[3].slice(0, 3); // 여기를 수정하여 최대 3개의 스택만 가져옵니다.
+
+                stackArray.forEach(stack => {
+                    const stackSpan = document.createElement('span');
+                    stackSpan.textContent = stack;
+                    element.appendChild(stackSpan);
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const customElements = document.querySelectorAll('.board__group, .board__deadline, .detail__table--desc, .board__stack div');
+                customElements.forEach((element) => {
+                    if (element.matches('.board__stack div')) {
+                        populateStack(element);
+                    } else {
+                        populateElement(element);
+                    }
+                });
+            });
+
+        </script>

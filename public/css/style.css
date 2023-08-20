@@ -1,0 +1,74 @@
+@import url('reset.css');
+
+/* components */
+@import url('components/canvan.css');
+@import url('components/board.css');
+@import url('components/menubar.css');
+@import url('components/header.css');
+@import url('components/search.css');
+@import url('components/notice.css');
+@import url('components/banner.css');
+/* screen */
+@import url('screen/login.css');
+@import url('screen/main.css');
+@import url('screen/intro.css');
+@import url('screen/join.css');
+@import url('screen/write.css');
+@import url('screen/detail.css');
+@import url('screen/group.css');
+@import url('screen/mypage.css');
+@import url('screen/team.css');
+@import url('screen/chat.css');
+@import url('screen/setting.css');
+
+:root{
+    --btn-color:#4C7DFB;
+    
+    --box-color:#92B0FF;
+    --menu-bar:#edeff4;
+    --search-color : #545454;
+    --background-color:whitesmoke;
+    --nav-color: #1a59f9 ;
+    --border-color:#bcbcbc;
+    --gray-color:#f5f5f5;
+
+    --main-color:#5A81FA;
+    --sub-color1:#2C308F;
+    --sub-color3:#CEDEFF;
+    --sub-color4:#F2F4FF;
+    --sub-color2:#1F1F1F;
+    --sub-color5:#696E82;
+    --sub-text:#A8B1CE;
+    --input-color:#F8F9FD;
+    --sub-color8:#FFFFFF;
+}
+
+
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'GmarketSansMedium';
+    
+}
+
+input{
+    background-color: var(--input-color) !important;
+}
+
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  flex-shrink: 0;
+}
