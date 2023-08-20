@@ -30,7 +30,7 @@
 </div>
 
 <h3>사용한 패키지 (Library Used)</h3> 
-<hr/>
+
 <ul>
   <li>@toast-ui/editor</li>
   <li>body-parser</li>
@@ -50,13 +50,9 @@
 
 
 <h3>팀정보</h3>
-<hr/>
 
-이치연
-김영재
-박홍선
-이의현
-최진우
+<img width="1657" alt="image" src="https://github.com/leechi/connect/assets/100564742/6f88d268-478c-4748-9a06-e5bbd784e9fe">
+
 
 
 ![Footer](https://capsule-render.vercel.app/api?type=waving&color=blue&height=200&section=footer)
