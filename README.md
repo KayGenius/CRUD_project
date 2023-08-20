@@ -1,4 +1,5 @@
-<img width="1338" alt="image" src="https://github.com/leechi/connect/assets/100564742/1a017963-168b-4a0f-8ea4-31929bdb1556">
+<img width="1657" alt="image" src="https://github.com/leechi/connect/assets/100564742/087f1ee8-9cb9-47ab-977e-102d51aa54f3">
+
 
 
 
@@ -17,7 +18,7 @@
 
 
 <h3>기술 스택 (Technique Used)</h3>
-<hr/>
+
 <div style="display:flex">
     <img src="https://img.shields.io/badge/HTML-ffa200?style=flat-square&logo=HTML&logoColor=white"/>
     <img src="https://img.shields.io/badge/CSS-blue?style=flat-square&logo=CSS&logoColor=white"/>
@@ -55,4 +56,4 @@
 
 
 
-![Footer](https://capsule-render.vercel.app/api?type=waving&color=blue&height=200&section=footer)
+
