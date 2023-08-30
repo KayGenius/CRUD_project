@@ -52,7 +52,8 @@
 
 <h3>팀정보</h3>
 
-<img width="1657" alt="image" src="https://github.com/leechi/connect/assets/100564742/6f88d268-478c-4748-9a06-e5bbd784e9fe">
+<img width="1338" alt="image" src="https://github.com/leechi/connect/assets/100564742/c70a8c5e-fd58-4909-b10d-937ac29a3da5">
+
 
 
 
