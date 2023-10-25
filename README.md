@@ -19,10 +19,13 @@
 
 ## 📌 주요 기능
 ### 로그인화면
-<img width="722" alt="스크린샷 2023-10-25 오전 11 18 14" src="https://github.com/KayGenius/CRUD_project/assets/138184932/f3fd075b-3687-4dfa-858b-c37a7df7fa6d">
+<img width="722" alt="스크린샷 2023-10-25 오전 11 18 14" src="https://github.com/KayGenius/CRUD_project/assets/138184932/2ccac221-b52d-471a-a321-ced4a3dab933">
+
+
+
 ### 회원가입
-<img width="447" alt="스크린
-샷 2023-10-25 오전 11 19 05" src="https://github.com/KayGenius/CRUD_project/assets/138184932/94bf3d5d-8289-484c-b2f8-6bbbff4f167a">
+<img width="447" alt="스크린샷 2023-10-25 오전 11 19 05" src="https://github.com/KayGenius/CRUD_project/assets/138184932/39c53103-c2e2-42b4-a4b4-d83d17648ce7">
+
 ### 메인페이지
 ![스크린샷 2023-10-25 오전 11 37 33](https://github.com/KayGenius/CRUD_project/assets/138184932/734b45c6-92dc-4d8b-a65c-67563941f2ff)
 ### 채팅기능
