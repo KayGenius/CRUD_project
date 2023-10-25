@@ -1,4 +1,4 @@
-# AIschool communitySite coding PROJECT
+# AIschool communitySite coding PROJECT
 
 
 
