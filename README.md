@@ -1,9 +1,9 @@
-# AIschool website coding PROJECT
+# AIschool communitySite coding PROJECT
 
 
 
 ## 🖥 프로젝트 소개
-인공지능사관학교 학생들을 위한 커뮤니티 제작
+인공지능사관학교 학생들을 위한 커뮤니티사이트 제작
 <br>
 
 ## 🕰 개발 기간
