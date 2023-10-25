@@ -18,15 +18,12 @@
 
 
 ## 📌 주요 기능
-### 로그인화면
-<img width="722" alt="스크린샷 2023-10-25 오전 11 18 14" src="https://github.com/KayGenius/CRUD_project/assets/138184932/2ccac221-b52d-471a-a321-ced4a3dab933">
-
-
-
-### 회원가입
-<img width="447" alt="스크린샷 2023-10-25 오전 11 19 05" src="https://github.com/KayGenius/CRUD_project/assets/138184932/39c53103-c2e2-42b4-a4b4-d83d17648ce7">
+<img width="998" alt="스크린샷 2023-10-25 오후 12 20 23" src="https://github.com/kim-genius/communitySite_project/assets/138184932/f3e30b65-dc1e-4db5-8a3d-fdaa23db6d40">
+<img width="998" alt="스크린샷 2023-10-25 오후 12 20 16" src="https://github.com/kim-genius/communitySite_project/assets/138184932/46d17cfe-1c85-4ef8-93d1-f10188b1b5f3">
 
 ### 메인페이지
-![스크린샷 2023-10-25 오전 11 37 33](https://github.com/KayGenius/CRUD_project/assets/138184932/734b45c6-92dc-4d8b-a65c-67563941f2ff)
+<img width="914" alt="스크린샷 2023-10-25 오후 12 19 55" src="https://github.com/kim-genius/communitySite_project/assets/138184932/09c9c25e-02cc-4064-b99f-e18a24c14b3d">
+
 ### 채팅기능
-![스크린샷 2023-10-25 오전 11 38 24](https://github.com/KayGenius/CRUD_project/assets/138184932/4f13c96e-30be-460a-a322-0c8ee1105a7e)
+
+<img width="914" alt="스크린샷 2023-10-25 오후 12 20 08" src="https://github.com/kim-genius/communitySite_project/assets/138184932/d61b6156-26d7-478c-bf0e-bf107a2e3528">
