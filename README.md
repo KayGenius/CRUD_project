@@ -11,8 +11,8 @@
 
 ### ⚙ 개발 환경
 
-- **Front-end** : JavaScript / CSS /HTML
-- **Back-end** : Node.js
+- **Front-end** : JavaScript / CSS /HTML /jQuery
+- **Back-end** : Node.js/socket.io
 - **Framework** : Express
 - **Database** : MySQL
 
